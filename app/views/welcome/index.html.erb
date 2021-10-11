@@ -1,0 +1,29 @@
+<!-- inside app/views/welcome/index.html.erb -->  
+
+<nav class="navbar navbar-info bg-info">
+  <div class="container-fluid">
+    <img src="https://www.pinclipart.com/picdir/big/143-1433228_ron-swanson-ron-swanson-clip-art-png-download.png" height="60" alt="">
+  </div>
+</nav>
+
+<main>
+  <section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">Ron Swanson Quotes</h1>
+        <p class="lead text-muted" id="show-quote" data-id="0">Click below for pearls of wisdom from the man, the myth, the legend himself</p>
+        <div style="display: none;" class="rating-div">
+          <h3 class="fw-light">Rating</h3>
+          <% (1..5).each do |star_position| %>
+            <% star_icon = "<i class='btn button fa fa-star' data-position=#{star_position}></i>".html_safe %>
+            <%= link_to star_icon, apis_quotes_rating_path(rating: star_position ), remote: true , method: :put, data: { params: { rating_id: "0" }.to_param }, class: "rating-link" %>
+          <% end %>
+          <div class="fw-light average"></div>
+        </div>
+        <p>
+          <%= button_to "Random Quote",apis_quotes_path, method: :get, remote: true, class: "btn btn-info my-2", form_class: "random-quote" %>
+        </p>
+      </div>
+    </div>
+  </section>
+</main>

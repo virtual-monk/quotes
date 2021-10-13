@@ -42,9 +42,13 @@ window.addEventListener("load", () => {
 function showRating(rating) {
   const stars = document.querySelectorAll(".fa-star");
   stars.forEach((element) => {
-    element.closest(".rating-link").dataset.params = "rating_id=" + rating.id
+
+    let rating_link = element.closest(".rating-link")
+    let star_number = element.dataset.position 
+    rating_link.dataset.params = "rating_id=" + rating.id
+    rating_link.href = "/apis/quotes/" + rating.quote_id + "/ratings/" + rating.id + "?rating=" + star_number
     element.classList.remove("active")
-    if (element.dataset.position <= rating.stars) {
+    if (star_number <= rating.stars) {
       element.classList.add("active")
     } 
   });

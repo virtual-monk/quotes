@@ -16,7 +16,7 @@
           <h3 class="fw-light">Rating</h3>
           <% (1..5).each do |star_position| %>
             <% star_icon = "<i class='btn button fa fa-star' data-position=#{star_position}></i>".html_safe %>
-            <%= link_to star_icon, apis_quotes_rating_path(rating: star_position ), remote: true , method: :put, data: { params: { rating_id: "0" }.to_param }, class: "rating-link" %>
+            <%= link_to star_icon, "#", remote: true , method: :put, class: "rating-link" %>
           <% end %>
           <div class="fw-light average"></div>
         </div>
